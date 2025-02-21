@@ -6,7 +6,7 @@
 /*   By: jocalder <jocalder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:01:12 by jocalder          #+#    #+#             */
-/*   Updated: 2025/02/21 18:40:06 by jocalder         ###   ########.fr       */
+/*   Updated: 2025/02/21 19:42:18 by jocalder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include "mlx/mlx.h"
 # include "mlx/mlx_int.h"
 
+# define SIZE 600
 # define SCROLL_UP 4
 # define SCROLL_DOWN 5
 
@@ -38,7 +39,6 @@ typedef struct s_data
 	int		size_line;
 	int		endian;
 	//mathematic parameters;
-	int		fractal;
 	double	min_x;
 	double	max_x;
 	double	min_y;
@@ -53,7 +53,5 @@ typedef struct s_data
 }	t_data;
 
 int	main(void);
-int	key_code(int keycode, t_data *data);
-int	mouse_handler(int button, int x, int y, t_data *data);
 
 #endif
