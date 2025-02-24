@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jocalder <jocalder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:01:12 by jocalder          #+#    #+#             */
-/*   Updated: 2025/02/23 23:01:25 by marvin           ###   ########.fr       */
+/*   Updated: 2025/02/24 18:53:38 by jocalder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,6 @@ void	draw_julia(t_fractal *fractal);
 void	draw_mandlebrot(t_fractal *fractal);
 void	calculate_julia(t_fractal *fractal);
 void	calculate_mandlebrot(t_fractal *fractal);
+void	parsed_args(t_fractal *fractal, char *argv);
 
 #endif

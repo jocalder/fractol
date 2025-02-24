@@ -6,13 +6,13 @@
 #    By: jocalder <jocalder@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/18 20:01:28 by jocalder          #+#    #+#              #
-#    Updated: 2025/02/21 18:02:30 by jocalder         ###   ########.fr        #
+#    Updated: 2025/02/24 16:30:20 by jocalder         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME            = fractol
 
-SRCS            = main.c
+SRCS            = main.c initialize.c fractol_utils.c 
 
 OBJS            = $(SRCS:.c=.o)
 
