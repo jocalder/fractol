@@ -12,11 +12,11 @@
 
 #include "fractol.h"
 
-int exit_fractal(t_data *fractal)
+int	exit_fractal(t_fractal *fractal)
 {
-    mlx_destroy_image(fractal->mlx, fractal->image);
-    mlx_destroy_window(fractal->mlx, fractal->window);
-    free(fractal);
-    exit(0);
-    return (0);
+	mlx_destroy_image(fractal->mlx, fractal->image);
+	mlx_destroy_window(fractal->mlx, fractal->window);
+	free(fractal);
+	exit(0);
+	return (0);
 }

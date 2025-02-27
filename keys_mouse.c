@@ -6,7 +6,7 @@
 /*   By: jocalder <jocalder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:32:07 by jocalder          #+#    #+#             */
-/*   Updated: 2025/02/24 17:51:07 by jocalder         ###   ########.fr       */
+/*   Updated: 2025/02/27 18:37:20 by jocalder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,49 @@ int	key_hook(t_fractal *fractal, int keycode)
 	}
 	else if (keycode == XK_c)
 	{
-		fractal->color = 
+		change_color(fractal);
 	}
-	else if (keycode == XK_Left)
-	else if (keycode == XK_Right)
-	else if (keycode == XK_Up)
-	else if (keycode == XK_Down)
+	else if (keycode == XK_Left || keycode == XK_Right
+		|| keycode == XK_Up || keycode == XK_Down)
+	{
+		move_fractal(fractal);
+	}
+	render_fractal(fractal);
+	return (0);
 }
 
-void	zoom(t_fractal *fractal, int x, int y, int zoom_direction)
+int	mouse_hook(int keycode, int x, int y t_fractal *fractal)
 {
-	
+	double	real;
+	double	imaginary;
+
+	real = 0.0;
+	imaginary = 0.0;
+	real = fractal->min_x + (x / (double)SIZE
+			* (fractal->max_x - fractal->min_x));
+	imaginary = fractal->min_y + (y / (double)SIZE
+			* (fractal->max_y - fractal->min_y));
+	if (keycode == 4)
+		fractal->zoom = 1.1;
+	if (keycode == 5)
+		fractal->zoom = 0.9;
+	if (keycode == 4 || keycode == 5)
+	{
+		fractal->min_x = real + (fractal->min_x - real) * fractal->zoom;
+		fractal->max_x = real + (fractal->max_x - real) * fractal->zoom;
+		fractal->min_y = imaginary + (fractal->min_y - imaginary)
+			* fractal->zoom;
+		fractal->max_y = imaginary + (fractal->max_y - imaginary)
+			* fractal->zoom;
+		render_fractal(fractal);
+	}
+	return (0);
 }
-int	mouse_hook(int keycode, t_fractal *fractal)
+
+int	get_color(t_fractal *fractal, int iteration)
 {
-	if ()
+	if (iteration = fractal->max_iter)
+		return (0x000000);
+	return (fractal->color * iteration / fractal->max_iter);
 }
+

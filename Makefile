@@ -6,13 +6,13 @@
 #    By: jocalder <jocalder@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/18 20:01:28 by jocalder          #+#    #+#              #
-#    Updated: 2025/02/24 16:30:20 by jocalder         ###   ########.fr        #
+#    Updated: 2025/02/27 18:37:35 by jocalder         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME            = fractol
 
-SRCS            = main.c initialize.c fractol_utils.c 
+SRCS            = main.c initialize.c free.c fractol_utils.c keys_mouse.c render_fractal.c
 
 OBJS            = $(SRCS:.c=.o)
 
@@ -28,7 +28,7 @@ MLX_DIR			= ./mlx
 
 MLX				= $(MLX_DIR)/libmlx.a
 
-CC              = cc
+CC              = gcc
 
 FLAGS           = -Wall -Wextra -Werror
 
