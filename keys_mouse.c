@@ -6,7 +6,7 @@
 /*   By: jocalder <jocalder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:32:07 by jocalder          #+#    #+#             */
-/*   Updated: 2025/02/27 18:37:20 by jocalder         ###   ########.fr       */
+/*   Updated: 2025/02/28 21:27:50 by jocalder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ int	key_hook(t_fractal *fractal, int keycode)
 	else if (keycode == XK_Left || keycode == XK_Right
 		|| keycode == XK_Up || keycode == XK_Down)
 	{
-		move_fractal(fractal);
+		move_fractal(fractal, keycode);
 	}
 	render_fractal(fractal);
 	return (0);
 }
 
-int	mouse_hook(int keycode, int x, int y t_fractal *fractal)
+int	mouse_hook(int keycode, int x, int y, t_fractal *fractal)
 {
 	double	real;
 	double	imaginary;
@@ -63,10 +63,6 @@ int	mouse_hook(int keycode, int x, int y t_fractal *fractal)
 	return (0);
 }
 
-int	get_color(t_fractal *fractal, int iteration)
-{
-	if (iteration = fractal->max_iter)
-		return (0x000000);
-	return (fractal->color * iteration / fractal->max_iter);
-}
+
+
 

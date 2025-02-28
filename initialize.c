@@ -6,7 +6,7 @@
 /*   By: jocalder <jocalder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 19:17:22 by jocalder          #+#    #+#             */
-/*   Updated: 2025/02/26 20:27:39 by jocalder         ###   ########.fr       */
+/*   Updated: 2025/02/28 21:27:42 by jocalder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	init_mlx(t_fractal *fractal)
 	fractal->mlx = mlx_init();
 	fractal->window = mlx_new_window(fractal->mlx, SIZE, SIZE, "fract'ol");
 	fractal->image = mlx_new_image(fractal->mlx, SIZE, SIZE);
-	fractal->adress = mlx_get_data_addr(fractal->image,
+	fractal->address = mlx_get_data_addr(fractal->image,
 			&fractal->bits_per_pixel, &fractal->size_line, &fractal->endian);
 }
 
