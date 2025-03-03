@@ -6,7 +6,7 @@
 /*   By: jocalder <jocalder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:01:12 by jocalder          #+#    #+#             */
-/*   Updated: 2025/02/28 21:18:42 by jocalder         ###   ########.fr       */
+/*   Updated: 2025/03/03 22:32:01 by jocalder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ typedef struct s_fractal
 	int		max_iter;
 	//user interaction;
 	int		type;
-	double zoom;
+	double	zoom;
 	int		color;
 	char	*name;
 	double	julia_cx;
@@ -58,25 +58,31 @@ typedef struct s_fractal
 }	t_fractal;
 
 int		main(int argc, char **argv);
-int		parse_args(t_fractal *fractal, char **argv, int argcs);
+int		parse_args(t_fractal *fractal, char **argv, int argc);
 int		exit_fractal(t_fractal *fractal);
 int		key_hook(t_fractal *fractal, int keycode);
 int		mouse_hook(int key_code, int x, int y, t_fractal *fractal);
 int		get_color(t_fractal *fractal, double real, double imaginary);
-int		compute_iteration()
+int		color_selector(t_fractal *fractal);
+int		compute_iteration(t_fractal *fractal, double real, double imaginary);
 double	ft_atof(char *str);
+void	parse_julia_args(t_fractal *fractal, char **argv, int argc);
+void	parse_other_args(t_fractal *fractal, char **argv, int argc);
+void	burningship(double *zr, double *zi);
 void	get_pixel(t_fractal *fractal, int x, int y, int color);
 void	process_decimal(char *str, double *decimal, double *division);
 void	draw_fractal(t_fractal *fractal, char *name);
-void	initialize_fractal(t_fractal *fractal, char **argv);
+void	initialize_fractal(t_fractal *fractal, char **argv, int argc);
 void	init_mlx(t_fractal *fractal);
 void	init_fractal(t_fractal *fractal);
 void	render_fractal(t_fractal *fractal);
 void	change_color(t_fractal *fractal);
 void	move_fractal(t_fractal *fractal, int keycode);
-//void	draw_julia(t_fractal *fractal);
-//void	draw_mandlebrot(t_fractal *fractal);
-//void	calculate_julia(t_fractal *fractal);
-//void	calculate_mandlebrot(t_fractal *fractal);
+// void	draw_julia(t_fractal *fractal);
+// void	draw_burningship(t_fractal *fractal);
+// void	draw_mandlebrot(t_fractal *fractal);
+// void	calculate_julia(t_fractal *fractal);
+// void	calculate_mandlebrot(t_fractal *fractal);
+// void	calculate_burningship(t_fractal *fractal);
 
 #endif

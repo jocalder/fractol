@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   drawings.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jocalder <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jocalder <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 22:11:43 by marvin            #+#    #+#             */
 /*   Updated: 2025/02/23 22:11:43 by marvin           ###   ########.fr       */
@@ -12,7 +12,6 @@
 
 #include "fractol.h"
 
-void    draw_julia(t_fractal *fractal)
+void	draw_julia(t_fractal *fractal)
 {
-    
 }

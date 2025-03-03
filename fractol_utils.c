@@ -6,39 +6,11 @@
 /*   By: jocalder <jocalder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 17:36:04 by jocalder          #+#    #+#             */
-/*   Updated: 2025/02/27 18:31:12 by jocalder         ###   ########.fr       */
+/*   Updated: 2025/03/03 20:44:24 by jocalder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-int	parse_args(t_fractal *fractal, char **argv, int argc)
-{
-	int	is_mandelbrot_or_burning;
-
-	is_mandelbrot_or_burning = ft_strncmp(argv[1], "Mandelbrot", 10) == 0
-		|| ft_strncmp(argv[1], "Burningship", 11) == 0;
-	fractal->name = argv[1];
-	if (ft_strncmp(argv[1], "Julia", 5) == 0 && argc == 4)
-	{
-		fractal->julia_cx = ft_atof(argv[2]);
-		fractal->julia_cy = ft_atof(argv[3]);
-	}
-	else if (is_mandelbrot_or_burning && argc == 6)
-	{
-		fractal->min_x = ft_atof(argv[2]);
-		fractal->max_x = ft_atof(argv[3]);
-		fractal->min_y = ft_atof(argv[4]);
-		fractal->max_y = ft_atof(argv[5]);
-	}
-	else
-	{
-		ft_putstr_fd("Usage: ./fractol Invalid type\n", 1);
-		ft_putstr_fd("Available: Julia, Mandelbrot and Burningship\n", 1);
-		exit_fractal(fractal);
-	}
-	return (0);
-}
 
 void	process_decimal(char *str, double *decimal, double *division)
 {
@@ -78,15 +50,37 @@ double	ft_atof(char *str)
 	return (sign * (result + (decimal / division)));
 }
 
-void	change_color(t_fractal *fractal)
+void	burningship(double *zr, double *zi)
 {
-	static int	color_change;
+	*zr = fabs(*zr);
+	*zi = fabs(*zi);
+}
 
-	color_change = (color_change + 1) % 3;
-	if (color_change == 0)
-		fractal->color = 0xFF0000;
-	else if (color_change == 1)
-		fractal->color = 0x00FF00;
-	else
-		fractal->color = 0x0000FF;
+int	compute_iteration(t_fractal *fractal, double real, double imaginary)
+{
+	int		iter;
+	double	zr;
+	double	zi;
+	double	tmp;
+
+	iter = 0;
+	zr = 0.0;
+	zi = 0.0;
+	if (fractal->type == JULIA)
+	{
+		zr = real;
+		zi = imaginary;
+		real = fractal->julia_cx;
+		imaginary = fractal->julia_cy;
+	}
+	while (zr * zr + zi * zi <= 4.0 && iter < fractal->max_iter)
+	{
+		if (fractal->type == BURNINGSHIP)
+			burningship(&zr, &zi);
+		tmp = zr * zr - zi * zi + real;
+		zi = 2.0 * zr * zi + imaginary;
+		zr = tmp;
+		iter++;
+	}
+	return (iter);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jocalder <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jocalder <jocalder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 17:54:08 by jocalder          #+#    #+#             */
-/*   Updated: 2024/09/23 18:19:20 by jocalder         ###   ########.fr       */
+/*   Updated: 2025/03/03 22:47:22 by jocalder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	size_t	i;
 
 	i = 0;
+	if (!s1 || !s2)
+		return (-1);
 	while (i < n && s1[i] != '\0' && s2[i] != '\0')
 	{
 		if (s1[i] != s2[i])

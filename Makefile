@@ -6,13 +6,14 @@
 #    By: jocalder <jocalder@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/18 20:01:28 by jocalder          #+#    #+#              #
-#    Updated: 2025/02/27 18:37:35 by jocalder         ###   ########.fr        #
+#    Updated: 2025/03/03 21:03:12 by jocalder         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME            = fractol
 
-SRCS            = main.c initialize.c free.c fractol_utils.c keys_mouse.c render_fractal.c
+SRCS            = main.c initialize.c free.c fractol_utils.c keys_mouse.c render_fractal.c color.c \
+					parse_args.c
 
 OBJS            = $(SRCS:.c=.o)
 

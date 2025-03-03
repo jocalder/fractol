@@ -6,7 +6,7 @@
 /*   By: jocalder <jocalder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 19:17:22 by jocalder          #+#    #+#             */
-/*   Updated: 2025/02/28 21:27:42 by jocalder         ###   ########.fr       */
+/*   Updated: 2025/03/03 22:54:53 by jocalder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,26 +23,44 @@ void	init_mlx(t_fractal *fractal)
 
 void	init_fractal(t_fractal *fractal)
 {
-	fractal->min_x = 0.0;
-	fractal->max_x = 0.0;
-	fractal->min_y = 0.0;
-	fractal->max_y = 0.0;
 	fractal->offset_x = 0;
 	fractal->offset_y = 0;
 	fractal->max_iter = 70;
 	fractal->zoom = 1.0;
 	fractal->color = 0xFFFFFF;
+	if (ft_strncmp(fractal->name, "Julia", 6) == 0)
+	{
+		fractal->type = JULIA;
+		fractal->min_x = -2.0;
+		fractal->max_x = 2.0;
+		fractal->min_y = -2.0;
+		fractal->max_y = 2.0;
+		fractal->julia_cx = 0.285;
+		fractal->julia_cy = 0.01;
+	}
+	else if (ft_strncmp(fractal->name, "Mandelbrot", 10) == 0)
+	{
+		printf("here\n");
+		fractal->type = MANDELBROT;
+		fractal->min_x = -2.0;
+		fractal->max_x = 1.0;
+		fractal->min_y = -1.5;
+		fractal->max_y = 1.5;
+	}
+	else if (ft_strncmp(fractal->name, "Burningship", 11) == 0)
+	{
+		fractal->type = BURNINGSHIP;
+		fractal->min_x = -2.0;
+		fractal->max_x = 1.0;
+		fractal->min_y = -2.0;
+		fractal->max_y = 1.0;
+	}
 }
 
-void	initialize_fractal(t_fractal *fractal, char **argv)
+void	initialize_fractal(t_fractal *fractal, char **argv, int argc)
 {
-	if (ft_strncmp(argv[0], "Julia", 5) == 0
-		|| ft_strncmp(argv[0], "Mandelbrot", 10) == 0
-		|| ft_strncmp(argv[0], "Burningship", 11) == 0)
-	{
-		init_mlx(fractal);
-		init_fractal(fractal);
-	}
-	else
-		exit_fractal(fractal);
+	fractal->name = argv[1];
+	init_fractal(fractal);
+	parse_args(fractal, argv, argc);
+	init_mlx(fractal);
 }

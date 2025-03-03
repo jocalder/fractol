@@ -14,9 +14,14 @@
 
 int	exit_fractal(t_fractal *fractal)
 {
-	mlx_destroy_image(fractal->mlx, fractal->image);
-	mlx_destroy_window(fractal->mlx, fractal->window);
-	free(fractal);
+	if (fractal->image)
+		mlx_destroy_image(fractal->mlx, fractal->image);
+	if (fractal->window)
+		mlx_destroy_window(fractal->mlx, fractal->window);
+	if (fractal->mlx)
+		free(fractal->mlx);
+	if (fractal)
+		free(fractal);
 	exit(0);
 	return (0);
 }
