@@ -6,7 +6,7 @@
 /*   By: jocalder <jocalder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 20:44:43 by jocalder          #+#    #+#             */
-/*   Updated: 2025/03/03 22:09:23 by jocalder         ###   ########.fr       */
+/*   Updated: 2025/03/03 23:08:08 by jocalder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	parse_other_args(t_fractal *fractal, char **argv, int argc)
 
 int	parse_args(t_fractal *fractal, char **argv, int argc)
 {
-	if (ft_strncmp(argv[1], "Julia", 5) == 0)
+	if (ft_strncmp(fractal->name, "Julia", 5) == 0)
 	{
 		if (argc != 4)
 		{
@@ -47,8 +47,8 @@ int	parse_args(t_fractal *fractal, char **argv, int argc)
 		}
 		parse_julia_args(fractal, argv, argc);
 	}
-	else if (ft_strncmp(argv[1], "Mandelbrot", 10) == 0
-		|| ft_strncmp(argv[1], "Burningship", 11) == 0)
+	else if (ft_strncmp(fractal->name, "Mandelbrot", 10) == 0
+		|| ft_strncmp(fractal->name, "Burningship", 11) == 0)
 		parse_other_args(fractal, argv, argc);
 	else
 	{

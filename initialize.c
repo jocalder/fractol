@@ -6,7 +6,7 @@
 /*   By: jocalder <jocalder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 19:17:22 by jocalder          #+#    #+#             */
-/*   Updated: 2025/03/03 22:54:53 by jocalder         ###   ########.fr       */
+/*   Updated: 2025/03/03 23:06:19 by jocalder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	init_fractal(t_fractal *fractal)
 	}
 	else if (ft_strncmp(fractal->name, "Mandelbrot", 10) == 0)
 	{
-		printf("here\n");
 		fractal->type = MANDELBROT;
 		fractal->min_x = -2.0;
 		fractal->max_x = 1.0;
@@ -59,7 +58,7 @@ void	init_fractal(t_fractal *fractal)
 
 void	initialize_fractal(t_fractal *fractal, char **argv, int argc)
 {
-	fractal->name = argv[1];
+	printf("fractal->name: %s\n", fractal->name);
 	init_fractal(fractal);
 	parse_args(fractal, argv, argc);
 	init_mlx(fractal);
