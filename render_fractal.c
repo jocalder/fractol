@@ -6,7 +6,7 @@
 /*   By: jocalder <jocalder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 18:33:37 by jocalder          #+#    #+#             */
-/*   Updated: 2025/03/03 19:52:29 by jocalder         ###   ########.fr       */
+/*   Updated: 2025/03/07 20:13:29 by jocalder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,17 @@ void	move_fractal(t_fractal *fractal, int keycode)
 		fractal->max_x -= move_x;
 		fractal->min_x -= move_x;
 	}
-	if (keycode == XK_Right)
+	else if (keycode == XK_Right)
 	{
 		fractal->max_x += move_x;
 		fractal->min_x += move_x;
 	}
-	if (keycode == XK_Up)
+	else if (keycode == XK_Up)
 	{
 		fractal->max_y -= move_y;
 		fractal->min_y -= move_y;
 	}
-	if (keycode == XK_Down)
+	else if (keycode == XK_Down)
 	{
 		fractal->max_y += move_y;
 		fractal->min_y += move_y;
@@ -87,10 +87,10 @@ int	get_color(t_fractal *fractal, double real, double imaginary)
 	iteration = compute_iteration(fractal, real, imaginary);
 	if (iteration == fractal->max_iter)
 		return (0x000000);
-	return (color_selector(fractal));
+	return (color_selector(fractal, iteration));
 }
 
 void	change_color(t_fractal *fractal)
 {
-	fractal->color = (fractal->color + 1) % 2;
+	fractal->color = (fractal->color + 1) % 4;
 }

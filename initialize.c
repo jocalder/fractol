@@ -3,14 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   initialize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jocalder <jocalder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 19:17:22 by jocalder          #+#    #+#             */
-/*   Updated: 2025/03/04 17:29:55 by marvin           ###   ########.fr       */
+/*   Updated: 2025/03/07 22:27:40 by jocalder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+static void	fractal_types(t_fractal *fractal)
+{
+	if (ft_strncmp(fractal->name, "Mandelbrot", 10) == 0)
+	{
+		fractal->type = MANDELBROT;
+		fractal->min_x = -2.0;
+		fractal->max_x = 1.0;
+		fractal->min_y = -1.5;
+		fractal->max_y = 1.5;
+	}
+	else if (ft_strncmp(fractal->name, "Burningship", 11) == 0)
+	{
+		fractal->type = BURNINGSHIP;
+		fractal->min_x = -2.0;
+		fractal->max_x = 1.0;
+		fractal->min_y = -2.0;
+		fractal->max_y = 1.0;
+	}
+}
 
 void	init_mlx(t_fractal *fractal)
 {
@@ -37,25 +57,15 @@ void	init_fractal(t_fractal *fractal)
 		fractal->max_y = 2.0;
 		fractal->julia_cx = 0.285;
 		fractal->julia_cy = 0.01;
-		printf("init Julia\n");
 	}
-	else if (ft_strncmp(fractal->name, "Mandelbrot", 10) == 0)
+	else if (ft_strncmp(fractal->name, "Mandelbrot", 10) == 0
+		|| ft_strncmp(fractal->name, "Butningship", 11) == 0)
+		fractal_types(fractal);
+	else
 	{
-		fractal->type = MANDELBROT;
-		fractal->min_x = -2.0;
-		fractal->max_x = 1.0;
-		fractal->min_y = -1.5;
-		fractal->max_y = 1.5;
-		printf("init Mandelbrot\n");
-	}
-	else if (ft_strncmp(fractal->name, "Burningship", 11) == 0)
-	{
-		fractal->type = BURNINGSHIP;
-		fractal->min_x = -2.0;
-		fractal->max_x = 1.0;
-		fractal->min_y = -2.0;
-		fractal->max_y = 1.0;
-		printf("init Burningship\n");
+		ft_putstr_fd("Usage: ./fractol Invalid type\n", 1);
+		ft_putstr_fd("Available: Julia, Mandelbrot and Burningship\n", 1);
+		exit_fractal(fractal);
 	}
 }
 

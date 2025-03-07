@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   fractol_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jocalder <jocalder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 17:36:04 by jocalder          #+#    #+#             */
-/*   Updated: 2025/03/04 18:10:02 by marvin           ###   ########.fr       */
+/*   Updated: 2025/03/07 22:54:46 by jocalder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+#include <stdbool.h>
 
 static bool	is_valid_char(char c)
 {
@@ -36,6 +37,8 @@ static bool	validate_string(char *str)
 			if (has_dot)
 				return (false);
 			has_dot = true;
+			//if (*str++ == '-' || *str++ == '+')
+			//	return (false);
 		}
 		if ((*str == '-' || *str == '+') && has_sign)
 			return (false);
@@ -54,7 +57,7 @@ void	process_decimal(char *str, double *decimal, double *division)
 	}
 }
 
-double	ft_atof(char *str)
+double	ft_atof(char *str, t_fractal *fractal)
 {
 	double	division;
 	double	result;
@@ -67,8 +70,8 @@ double	ft_atof(char *str)
 	sign = 1;
 	if (!validate_string(str))
 	{
-		printf("Use valid values\n");
-		exit(127);
+		ft_putstr_fd("Use valid values\n", 1);
+		exit_fractal(fractal);
 	}
 	while (*str == 32 || (*str >= 9 && *str <= 13))
 		str++;
