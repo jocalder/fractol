@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jocalder <jocalder@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:01:12 by jocalder          #+#    #+#             */
-/*   Updated: 2025/03/03 22:32:01 by jocalder         ###   ########.fr       */
+/*   Updated: 2025/03/04 17:44:31 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <math.h>
+# include <stdbool.h>
 # include <X11/X.h>
 # include <X11/keysym.h>
 # include <X11/Xlib.h>
