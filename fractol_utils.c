@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jocalder <jocalder@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 17:36:04 by jocalder          #+#    #+#             */
-/*   Updated: 2025/03/07 22:54:46 by jocalder         ###   ########.fr       */
+/*   Updated: 2025/03/09 23:29:23 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,39 +86,4 @@ double	ft_atof(char *str, t_fractal *fractal)
 	if (*str == '.')
 		process_decimal(++str, &decimal, &division);
 	return (sign * (result + (decimal / division)));
-}
-
-void	burningship(double *zr, double *zi)
-{
-	*zr = fabs(*zr);
-	*zi = fabs(*zi);
-}
-
-int	compute_iteration(t_fractal *fractal, double real, double imaginary)
-{
-	int		iter;
-	double	zr;
-	double	zi;
-	double	tmp;
-
-	iter = 0;
-	zr = 0.0;
-	zi = 0.0;
-	if (fractal->type == JULIA)
-	{
-		zr = real;
-		zi = imaginary;
-		real = fractal->julia_cx;
-		imaginary = fractal->julia_cy;
-	}
-	while (zr * zr + zi * zi <= 4.0 && iter < fractal->max_iter)
-	{
-		if (fractal->type == BURNINGSHIP)
-			burningship(&zr, &zi);
-		tmp = zr * zr - zi * zi + real;
-		zi = 2.0 * zr * zi + imaginary;
-		zr = tmp;
-		iter++;
-	}
-	return (iter);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys_mouse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jocalder <jocalder@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:32:07 by jocalder          #+#    #+#             */
-/*   Updated: 2025/03/07 20:28:54 by jocalder         ###   ########.fr       */
+/*   Updated: 2025/03/09 22:08:28 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,33 @@ int	mouse_hook(int keycode, int x, int y, t_fractal *fractal)
 	fractal->max_y = imaginary + (fractal->max_y - imaginary) * zoom_move;
 	render_fractal(fractal);
 	return (0);
+}
+
+void	move_fractal(t_fractal *fractal, int keycode)
+{
+	double	move_x;
+	double	move_y;
+
+	move_x = (fractal->max_x - fractal->min_x) * 0.1;
+	move_y = (fractal->max_y - fractal->min_y) * 0.1;
+	if (keycode == XK_Left)
+	{
+		fractal->max_x -= move_x;
+		fractal->min_x -= move_x;
+	}
+	else if (keycode == XK_Right)
+	{
+		fractal->max_x += move_x;
+		fractal->min_x += move_x;
+	}
+	else if (keycode == XK_Up)
+	{
+		fractal->max_y -= move_y;
+		fractal->min_y -= move_y;
+	}
+	else if (keycode == XK_Down)
+	{
+		fractal->max_y += move_y;
+		fractal->min_y += move_y;
+	}
 }

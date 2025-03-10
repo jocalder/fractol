@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_fractal.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jocalder <jocalder@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 18:33:37 by jocalder          #+#    #+#             */
-/*   Updated: 2025/03/07 20:13:29 by jocalder         ###   ########.fr       */
+/*   Updated: 2025/03/09 23:13:48 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,35 +40,6 @@ void	render_fractal(t_fractal *fractal)
 		fractal->window, fractal->image, 0, 0);
 }
 
-void	move_fractal(t_fractal *fractal, int keycode)
-{
-	double	move_x;
-	double	move_y;
-
-	move_x = (fractal->max_x - fractal->min_x) * 0.1;
-	move_y = (fractal->max_y - fractal->min_y) * 0.1;
-	if (keycode == XK_Left)
-	{
-		fractal->max_x -= move_x;
-		fractal->min_x -= move_x;
-	}
-	else if (keycode == XK_Right)
-	{
-		fractal->max_x += move_x;
-		fractal->min_x += move_x;
-	}
-	else if (keycode == XK_Up)
-	{
-		fractal->max_y -= move_y;
-		fractal->min_y -= move_y;
-	}
-	else if (keycode == XK_Down)
-	{
-		fractal->max_y += move_y;
-		fractal->min_y += move_y;
-	}
-}
-
 void	get_pixel(t_fractal *fractal, int x, int y, int color)
 {
 	char	*pixel;
@@ -86,7 +57,7 @@ int	get_color(t_fractal *fractal, double real, double imaginary)
 
 	iteration = compute_iteration(fractal, real, imaginary);
 	if (iteration == fractal->max_iter)
-		return (0x000000);
+		return (0xFF0000);
 	return (color_selector(fractal, iteration));
 }
 

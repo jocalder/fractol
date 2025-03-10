@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jocalder <jocalder@student.42.fr>          +#+  +:+       +#+         #
+#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/18 20:01:28 by jocalder          #+#    #+#              #
-#    Updated: 2025/03/07 22:53:18 by jocalder         ###   ########.fr        #
+#    Updated: 2025/03/09 23:01:53 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME            = fractol
 
 SRCS            = main.c initialize.c free.c fractol_utils.c keys_mouse.c render_fractal.c color.c \
-					parse_args.c
+					parse_args.c math_fractals.c
 
 OBJS            = $(SRCS:.c=.o)
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jocalder <jocalder@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 19:17:22 by jocalder          #+#    #+#             */
-/*   Updated: 2025/03/07 22:27:40 by jocalder         ###   ########.fr       */
+/*   Updated: 2025/03/09 22:55:35 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	init_fractal(t_fractal *fractal)
 		fractal->julia_cy = 0.01;
 	}
 	else if (ft_strncmp(fractal->name, "Mandelbrot", 10) == 0
-		|| ft_strncmp(fractal->name, "Butningship", 11) == 0)
+		|| ft_strncmp(fractal->name, "Burningship", 11) == 0)
 		fractal_types(fractal);
 	else
 	{
