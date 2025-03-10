@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jocalder <jocalder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 19:17:22 by jocalder          #+#    #+#             */
-/*   Updated: 2025/03/09 22:55:35 by marvin           ###   ########.fr       */
+/*   Updated: 2025/03/10 20:05:10 by jocalder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,6 @@ void	init_fractal(t_fractal *fractal)
 void	initialize_fractal(t_fractal *fractal, char **argv, int argc)
 {
 	init_fractal(fractal);
-	parse_args(fractal, argv, argc);
 	init_mlx(fractal);
+	parse_args(fractal, argv, argc);
 }

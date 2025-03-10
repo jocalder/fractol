@@ -6,7 +6,7 @@
 /*   By: jocalder <jocalder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 17:05:32 by jocalder          #+#    #+#             */
-/*   Updated: 2025/03/07 22:49:59 by jocalder         ###   ########.fr       */
+/*   Updated: 2025/03/10 18:43:17 by jocalder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int	color_variation(t_fractal *fractal, int iteration)
 	return ((red << 16 | green << 8 | blue));
 }
 
-int	color_selector(t_fractal *fractal, int	iteration)
+int	color_selector(t_fractal *fractal, int iteration)
 {
 	if (fractal->color == 0)
 		return (color_origin(fractal, iteration));

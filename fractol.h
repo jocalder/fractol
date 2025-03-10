@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jocalder <jocalder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:01:12 by jocalder          #+#    #+#             */
-/*   Updated: 2025/03/09 23:01:31 by marvin           ###   ########.fr       */
+/*   Updated: 2025/03/10 19:19:10 by jocalder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # include "mlx/mlx.h"
 # include "mlx/mlx_int.h"
 
-# define SIZE 700
+# define SIZE 900
 # define SCROLL_UP 4
 # define SCROLL_DOWN 5
 # define JULIA 1
@@ -66,10 +66,7 @@ int		get_color(t_fractal *fractal, double real, double imaginary);
 int		color_selector(t_fractal *fractal, int iteration);
 int		compute_iteration(t_fractal *fractal, double real, double imaginary);
 int		math_julia(t_fractal *fractal, double real, double imaginary);
-int		math_mandelbrot(t_fractal *fractal, double real, double imaginary);
-int		math_burningship(t_fractal *fractal, double real, double imaginary);
 double	ft_atof(char *str, t_fractal *fractal);
-void	parse_julia_args(t_fractal *fractal, char **argv, int argc);
 void	parse_other_args(t_fractal *fractal, char **argv, int argc);
 void	get_pixel(t_fractal *fractal, int x, int y, int color);
 void	process_decimal(char *str, double *decimal, double *division);

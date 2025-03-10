@@ -3,31 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   fractol_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jocalder <jocalder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 17:36:04 by jocalder          #+#    #+#             */
-/*   Updated: 2025/03/09 23:29:23 by marvin           ###   ########.fr       */
+/*   Updated: 2025/03/10 20:46:23 by jocalder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include <stdbool.h>
 
+static void	valid_values(t_fractal *fractal)
+{
+	ft_putstr_fd("Use valid values\n", 1);
+	exit_fractal(fractal);
+}
+
 static bool	is_valid_char(char c)
 {
-	return (c == '.' || c == '-' || c == '+' || (c >= '0' && c <= '9'));
+	return (c == '.' || (c >= '0' && c <= '9'));
 }
 
 static bool	validate_string(char *str)
 {
-	bool has_sign = false;
-	bool has_dot = false;
+	bool	has_dot;
 
+	has_dot = false;
 	if (*str == '-' || *str == '+')
-	{
-		has_sign = true;
 		str++;
-	}
 	while (*str)
 	{
 		if (!is_valid_char(*str))
@@ -37,11 +40,7 @@ static bool	validate_string(char *str)
 			if (has_dot)
 				return (false);
 			has_dot = true;
-			//if (*str++ == '-' || *str++ == '+')
-			//	return (false);
 		}
-		if ((*str == '-' || *str == '+') && has_sign)
-			return (false);
 		str++;
 	}
 	return (true);
@@ -69,10 +68,7 @@ double	ft_atof(char *str, t_fractal *fractal)
 	decimal = 0.0;
 	sign = 1;
 	if (!validate_string(str))
-	{
-		ft_putstr_fd("Use valid values\n", 1);
-		exit_fractal(fractal);
-	}
+		valid_values(fractal);
 	while (*str == 32 || (*str >= 9 && *str <= 13))
 		str++;
 	if (*str == '-' || *str == '+')
