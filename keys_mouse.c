@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys_mouse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jocalder <jocalder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:32:07 by jocalder          #+#    #+#             */
-/*   Updated: 2025/03/09 22:08:28 by marvin           ###   ########.fr       */
+/*   Updated: 2025/03/11 16:52:28 by jocalder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ int	mouse_hook(int keycode, int x, int y, t_fractal *fractal)
 		* (fractal->max_x - fractal->min_x);
 	imaginary = fractal->min_y + (y / (double)SIZE)
 		* (fractal->max_y - fractal->min_y);
-	if (keycode == SCROLL_UP)
+	if (keycode == SCROLL_DOWN)
 		zoom_move = 1.1;
-	else if (keycode == SCROLL_DOWN)
+	else if (keycode == SCROLL_UP)
 		zoom_move = 0.9;
 	else
 		return (0);

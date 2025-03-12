@@ -6,7 +6,7 @@
 /*   By: jocalder <jocalder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 20:44:43 by jocalder          #+#    #+#             */
-/*   Updated: 2025/03/10 19:56:20 by jocalder         ###   ########.fr       */
+/*   Updated: 2025/03/12 16:50:15 by jocalder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,8 @@ int	parse_args(t_fractal *fractal, char **argv, int argc)
 		if (argc != 4)
 		{
 			ft_putstr_fd("Usage: ./fractol Julia <cx> <cy>\n", 1);
-			printf("value fractal: %p\n", fractal);
 			exit_fractal(fractal);
 		}
-		fractal->julia_cx = ft_atof(argv[2], fractal);
-		fractal->julia_cy = ft_atof(argv[3], fractal);
 	}
 	else if (ft_strncmp(fractal->name, "Mandelbrot", 10) == 0
 		|| ft_strncmp(fractal->name, "Burningship", 11) == 0)

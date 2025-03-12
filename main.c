@@ -6,7 +6,7 @@
 /*   By: jocalder <jocalder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 16:43:41 by jocalder          #+#    #+#             */
-/*   Updated: 2025/03/07 20:30:05 by jocalder         ###   ########.fr       */
+/*   Updated: 2025/03/11 16:33:22 by jocalder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	main(int argc, char **argv)
 		ft_putstr_fd("Error: Memory allocation failed\n", 1);
 		return (1);
 	}
+	ft_memset(fractal, 0, sizeof(t_fractal));
 	fractal->name = argv[1];
 	initialize_fractal(fractal, argv, argc);
 	mlx_hook(fractal->window, 17, 0, close_window, fractal);

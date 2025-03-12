@@ -6,29 +6,29 @@
 /*   By: jocalder <jocalder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 19:17:22 by jocalder          #+#    #+#             */
-/*   Updated: 2025/03/10 20:05:10 by jocalder         ###   ########.fr       */
+/*   Updated: 2025/03/12 16:48:07 by jocalder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static void	fractal_types(t_fractal *fractal)
+static void	fractal_types(t_fractal *fractal, char **argv)
 {
 	if (ft_strncmp(fractal->name, "Mandelbrot", 10) == 0)
 	{
 		fractal->type = MANDELBROT;
-		fractal->min_x = -2.0;
-		fractal->max_x = 1.0;
-		fractal->min_y = -1.5;
-		fractal->max_y = 1.5;
+		fractal->min_x = ft_atof(argv[2], fractal);
+		fractal->max_x = ft_atof(argv[3], fractal);
+		fractal->min_y = ft_atof(argv[4], fractal);
+		fractal->max_y = ft_atof(argv[5], fractal);
 	}
 	else if (ft_strncmp(fractal->name, "Burningship", 11) == 0)
 	{
 		fractal->type = BURNINGSHIP;
-		fractal->min_x = -2.0;
-		fractal->max_x = 1.0;
-		fractal->min_y = -2.0;
-		fractal->max_y = 1.0;
+		fractal->min_x = ft_atof(argv[2], fractal);
+		fractal->max_x = ft_atof(argv[3], fractal);
+		fractal->min_y = ft_atof(argv[4], fractal);
+		fractal->max_y = ft_atof(argv[5], fractal);
 	}
 }
 
@@ -41,7 +41,7 @@ void	init_mlx(t_fractal *fractal)
 			&fractal->bits_per_pixel, &fractal->size_line, &fractal->endian);
 }
 
-void	init_fractal(t_fractal *fractal)
+void	init_fractal(t_fractal *fractal, char **argv)
 {
 	fractal->offset_x = 0;
 	fractal->offset_y = 0;
@@ -55,12 +55,12 @@ void	init_fractal(t_fractal *fractal)
 		fractal->max_x = 2.0;
 		fractal->min_y = -2.0;
 		fractal->max_y = 2.0;
-		fractal->julia_cx = 0.285;
-		fractal->julia_cy = 0.01;
+		fractal->julia_cx = ft_atof(argv[2], fractal);
+		fractal->julia_cy = ft_atof(argv[3], fractal);
 	}
 	else if (ft_strncmp(fractal->name, "Mandelbrot", 10) == 0
 		|| ft_strncmp(fractal->name, "Burningship", 11) == 0)
-		fractal_types(fractal);
+		fractal_types(fractal, argv);
 	else
 	{
 		ft_putstr_fd("Usage: ./fractol Invalid type\n", 1);
@@ -71,7 +71,7 @@ void	init_fractal(t_fractal *fractal)
 
 void	initialize_fractal(t_fractal *fractal, char **argv, int argc)
 {
-	init_fractal(fractal);
-	init_mlx(fractal);
 	parse_args(fractal, argv, argc);
+	init_fractal(fractal, argv);
+	init_mlx(fractal);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_fractal.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jocalder <jocalder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 18:33:37 by jocalder          #+#    #+#             */
-/*   Updated: 2025/03/09 23:13:48 by marvin           ###   ########.fr       */
+/*   Updated: 2025/03/11 16:56:48 by jocalder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	render_fractal(t_fractal *fractal)
 		x = 0;
 		while (x < SIZE)
 		{
-			real = fractal->min_x + (x / (double)SIZE)
+			real = fractal->min_x + ((double)x / SIZE)
 				* (fractal->max_x - fractal->min_x) + fractal->offset_x;
-			imaginary = fractal->min_y + (y / (double)SIZE)
+			imaginary = fractal->min_y + ((double)y / SIZE)
 				* (fractal->max_y - fractal->min_y) + fractal->offset_y;
 			color = get_color(fractal, real, imaginary);
 			get_pixel(fractal, x, y, color);

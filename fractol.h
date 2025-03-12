@@ -6,7 +6,7 @@
 /*   By: jocalder <jocalder@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:01:12 by jocalder          #+#    #+#             */
-/*   Updated: 2025/03/10 19:19:10 by jocalder         ###   ########.fr       */
+/*   Updated: 2025/03/12 17:55:43 by jocalder         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include <X11/keysym.h>
 # include <X11/Xlib.h>
 # include "libft/libft.h"
-# include "mlx/mlx.h"
-# include "mlx/mlx_int.h"
+# include "minilibx/mlx.h"
+# include "minilibx/mlx_int.h"
 
 # define SIZE 900
 # define SCROLL_UP 4
@@ -73,7 +73,7 @@ void	process_decimal(char *str, double *decimal, double *division);
 void	draw_fractal(t_fractal *fractal, char *name);
 void	initialize_fractal(t_fractal *fractal, char **argv, int argc);
 void	init_mlx(t_fractal *fractal);
-void	init_fractal(t_fractal *fractal);
+void	init_fractal(t_fractal *fractal, char **argv);
 void	render_fractal(t_fractal *fractal);
 void	change_color(t_fractal *fractal);
 void	move_fractal(t_fractal *fractal, int keycode);
