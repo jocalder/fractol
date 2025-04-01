@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jocalder <jocalder@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:01:12 by jocalder          #+#    #+#             */
-/*   Updated: 2025/03/12 17:55:43 by jocalder         ###   ########.fr       */
+/*   Updated: 2025/04/01 18:13:01 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # include "minilibx/mlx.h"
 # include "minilibx/mlx_int.h"
 
-# define SIZE 900
+# define SIZE 600
 # define SCROLL_UP 4
 # define SCROLL_DOWN 5
 # define JULIA 1
